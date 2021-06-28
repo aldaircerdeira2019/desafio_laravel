@@ -1,11 +1,8 @@
 .dbdata
 .git
 .idea
-.env
 package-lock.json
-composer.lock
 node_modules
-vendor
 storage/framework/cache/**
 storage/framework/sessions/**
 storage/framework/views/**
