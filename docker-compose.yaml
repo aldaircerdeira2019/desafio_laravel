@@ -1,0 +1,33 @@
+version: '3.7'
+
+services:
+  laravel-app:
+    container_name: desafiolaravel
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports: 
+      - "8080:8000"
+    volumes:
+      - .:/app
+    depends_on:
+    - mysql-app
+    networks:
+      - app-network
+
+  mysql-app:
+    image: mysql:5.7.22
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - .dbdata:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_ROOT_PASSWORD: laravel
+    networks:
+      - app-network
+  
+networks:
+  app-network:
+    driver: bridge 
