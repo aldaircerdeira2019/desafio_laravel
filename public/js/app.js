@@ -2143,6 +2143,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _api_category__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../api/category */ "./resources/js/api/category.js");
 //
 //
 //
@@ -2163,8 +2164,152 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "Home"
+  name: "Home",
+  data: function data() {
+    return {
+      params: {
+        tipo_id: "",
+        marca_id: "",
+        modelo_id: "",
+        versao_id: ""
+      },
+      tipos: {},
+      marcas: {},
+      modelos: {},
+      versoes: {},
+      errors: []
+    };
+  },
+  mounted: function mounted() {
+    this.getTipos();
+  },
+  methods: {
+    getTipos: function getTipos() {
+      var _this = this;
+
+      _api_category__WEBPACK_IMPORTED_MODULE_0__.default.tipos().then(function (r) {
+        _this.tipos = r.data;
+      })["catch"](function (error) {});
+    },
+    getMarcas: function getMarcas(tipo_id) {
+      var _this2 = this;
+
+      _api_category__WEBPACK_IMPORTED_MODULE_0__.default.marcas({
+        tipo_id: tipo_id
+      }).then(function (r) {
+        _this2.marcas = r.data;
+      })["catch"](function (error) {});
+    },
+    getModelo: function getModelo(marca_id) {
+      var _this3 = this;
+
+      _api_category__WEBPACK_IMPORTED_MODULE_0__.default.modelos({
+        marca_id: marca_id
+      }).then(function (r) {
+        _this3.modelos = r.data;
+      })["catch"](function (error) {});
+    },
+    getVersao: function getVersao(modelo_id) {
+      var _this4 = this;
+
+      _api_category__WEBPACK_IMPORTED_MODULE_0__.default.versoes({
+        modelo_id: modelo_id
+      }).then(function (r) {
+        _this4.versoes = r.data;
+      })["catch"](function (error) {});
+    },
+    onchangeTipo: function onchangeTipo() {
+      this.modelos = {};
+      this.versoes = {};
+      this.getMarcas(this.params.tipo_id);
+    },
+    onchangeMarca: function onchangeMarca() {
+      this.versoes = {};
+      this.getModelo(this.params.marca_id);
+    },
+    onchangeModelo: function onchangeModelo() {
+      this.getVersao(this.params.modelo_id);
+    }
+  }
 });
 
 /***/ }),
@@ -2319,6 +2464,45 @@ var auth = {
   },
   logout: function logout() {
     return axios__WEBPACK_IMPORTED_MODULE_0___default().get(rota + "logout");
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (auth);
+
+/***/ }),
+
+/***/ "./resources/js/api/category.js":
+/*!**************************************!*\
+  !*** ./resources/js/api/category.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+var rota = "http://localhost:8080/api/";
+var auth = {
+  tipos: function tipos() {
+    return axios__WEBPACK_IMPORTED_MODULE_0___default().get(rota + "category/tipos");
+  },
+  marcas: function marcas(params) {
+    return axios__WEBPACK_IMPORTED_MODULE_0___default().get(rota + "category/marcas", {
+      params: params
+    });
+  },
+  modelos: function modelos(params) {
+    return axios__WEBPACK_IMPORTED_MODULE_0___default().get(rota + "category/modelos", {
+      params: params
+    });
+  },
+  versoes: function versoes(params) {
+    return axios__WEBPACK_IMPORTED_MODULE_0___default().get(rota + "category/versoes", {
+      params: params
+    });
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (auth);
@@ -39444,30 +39628,303 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-8 offset-lg-2" }, [
+        _c("div", { staticClass: "card" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c(
+              "form",
+              { staticClass: "needs-validation", attrs: { novalidate: "" } },
+              [
+                _c("div", { staticClass: "form-row" }, [
+                  _c("div", { staticClass: "col-md-3 mb-3" }, [
+                    _c("label", { attrs: { for: "01" } }, [_vm._v("Tipo")]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.params.tipo_id,
+                            expression: "params.tipo_id"
+                          }
+                        ],
+                        staticClass: "custom-select",
+                        attrs: { id: "01" },
+                        on: {
+                          change: [
+                            function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.params,
+                                "tipo_id",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            },
+                            function($event) {
+                              return _vm.onchangeTipo()
+                            }
+                          ]
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          { attrs: { selected: "", disabled: "", value: "" } },
+                          [_vm._v("...")]
+                        ),
+                        _vm._v(" "),
+                        _vm._l(_vm.tipos, function(tipo) {
+                          return _c(
+                            "option",
+                            { key: tipo.id, domProps: { value: tipo.id } },
+                            [
+                              _vm._v(
+                                "\n                    " +
+                                  _vm._s(tipo.name) +
+                                  "\n                  "
+                              )
+                            ]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-3 mb-3" }, [
+                    _c("label", { attrs: { for: "02" } }, [_vm._v("Marca")]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.params.marca_id,
+                            expression: "params.marca_id"
+                          }
+                        ],
+                        staticClass: "custom-select",
+                        attrs: { id: "02" },
+                        on: {
+                          change: [
+                            function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.params,
+                                "marca_id",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            },
+                            function($event) {
+                              return _vm.onchangeMarca()
+                            }
+                          ]
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          { attrs: { selected: "", disabled: "", value: "" } },
+                          [_vm._v("...")]
+                        ),
+                        _vm._v(" "),
+                        _vm._l(_vm.marcas, function(marca) {
+                          return _c(
+                            "option",
+                            { key: marca.id, domProps: { value: marca.id } },
+                            [
+                              _vm._v(
+                                "\n                    " +
+                                  _vm._s(marca.name) +
+                                  "\n                  "
+                              )
+                            ]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-3 mb-3" }, [
+                    _c("label", { attrs: { for: "03" } }, [_vm._v("Modelo")]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.params.modelo_id,
+                            expression: "params.modelo_id"
+                          }
+                        ],
+                        staticClass: "custom-select",
+                        attrs: { id: "03" },
+                        on: {
+                          change: [
+                            function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.params,
+                                "modelo_id",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            },
+                            function($event) {
+                              return _vm.onchangeModelo()
+                            }
+                          ]
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          { attrs: { selected: "", disabled: "", value: "" } },
+                          [_vm._v("...")]
+                        ),
+                        _vm._v(" "),
+                        _vm._l(_vm.modelos, function(modelo) {
+                          return _c(
+                            "option",
+                            { key: modelo.id, domProps: { value: modelo.id } },
+                            [
+                              _vm._v(
+                                "\n                    " +
+                                  _vm._s(modelo.name) +
+                                  "\n                  "
+                              )
+                            ]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-3 mb-3" }, [
+                    _c("label", { attrs: { for: "04" } }, [_vm._v("Versão")]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.params.versao_id,
+                            expression: "params.versao_id"
+                          }
+                        ],
+                        staticClass: "custom-select",
+                        attrs: { i: "", d: "04" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.params,
+                              "versao_id",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          { attrs: { selected: "", disabled: "", value: "" } },
+                          [_vm._v("...")]
+                        ),
+                        _vm._v(" "),
+                        _vm._l(_vm.versoes, function(versao) {
+                          return _c(
+                            "option",
+                            { key: versao.id, domProps: { value: versao.id } },
+                            [
+                              _vm._v(
+                                "\n                    " +
+                                  _vm._s(versao.name) +
+                                  "\n                  "
+                              )
+                            ]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("button", { staticClass: "btn btn-primary btn-sm" }, [
+                  _vm._v("Filtrar")
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "\n            Non arcu risus quis varius quam quisque. Dictum varius duis at\n            consectetur lorem. Posuere sollicitudin aliquam ultrices sagittis\n            orci a scelerisque purus semper.\n          "
+              )
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-lg-8 offset-lg-2" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _c("h5", { staticClass: "card-title" }, [_vm._v("Card title")])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("p", [
-                _vm._v(
-                  "\n            Non arcu risus quis varius quam quisque. Dictum varius duis at\n            consectetur lorem. Posuere sollicitudin aliquam ultrices sagittis\n            orci a scelerisque purus semper.\n          "
-                )
-              ])
-            ])
-          ])
-        ])
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h5", { staticClass: "card-title text-center" }, [
+        _vm._v("DICAS AUTOMOTIVAS")
       ])
     ])
   }
