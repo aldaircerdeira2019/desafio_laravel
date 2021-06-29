@@ -21,6 +21,11 @@
               >{{ authUser.name }}
             </a>
           </li>
+           <li class="nav-item active">
+            <router-link :to="{ name: 'dicas' }" class="nav-link" href="#" v-if="authUser"
+              >Minhas Dicas
+            </router-link>
+          </li>
         </ul>
         <a
           v-if="authUser"
