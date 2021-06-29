@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\{ RegisterController, LoginController };
-use App\Http\Controllers\{ HomeController, CategoryController };
+use App\Http\Controllers\{ HomeController, CategoryController, DicaController };
 
 Route::middleware('auth:sanctum')->get('/athenticated', function (Request $request) {
     return response()->json($request->user());
@@ -21,3 +21,5 @@ Route::prefix('category')->group(function () {
     Route::get('modelos' , [CategoryController::class, 'findByMarcaModelos']);
     Route::get('versoes' , [CategoryController::class, 'findByModeloVersoes']);
 });
+
+Route::resource('dica', DicaController::class)->except(['create','show','edit']);
