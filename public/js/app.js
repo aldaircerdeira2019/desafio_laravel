@@ -40788,72 +40788,82 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("nav", { staticClass: "navbar navbar-expand-lg navbar-dark bg-dark" }, [
-      _c("a", { staticClass: "navbar-brand", attrs: { href: "#" } }, [
-        _vm._v("Home")
-      ]),
-      _vm._v(" "),
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "collapse navbar-collapse",
-          attrs: { id: "navbarSupportedContent" }
-        },
-        [
-          _c("ul", { staticClass: "navbar-nav mr-auto" }, [
-            _c("li", { staticClass: "nav-item active" }, [
-              _vm.authUser
-                ? _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                    _vm._v(_vm._s(_vm.authUser.name) + "\n          ")
-                  ])
-                : _vm._e()
-            ])
-          ]),
-          _vm._v(" "),
-          _vm.authUser
-            ? _c(
-                "a",
-                {
-                  staticClass: "btn btn-outline-success my-2 my-sm-0",
-                  attrs: { href: "#" },
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      return _vm.logout.apply(null, arguments)
+    _c(
+      "nav",
+      { staticClass: "navbar navbar-expand-lg navbar-dark bg-dark" },
+      [
+        _c(
+          "router-link",
+          {
+            staticClass: "navbar-brand",
+            attrs: { to: { name: "home" }, href: "#" }
+          },
+          [_vm._v("Home")]
+        ),
+        _vm._v(" "),
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "collapse navbar-collapse",
+            attrs: { id: "navbarSupportedContent" }
+          },
+          [
+            _c("ul", { staticClass: "navbar-nav mr-auto" }, [
+              _c("li", { staticClass: "nav-item active" }, [
+                _vm.authUser
+                  ? _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
+                      _vm._v(_vm._s(_vm.authUser.name) + "\n          ")
+                    ])
+                  : _vm._e()
+              ])
+            ]),
+            _vm._v(" "),
+            _vm.authUser
+              ? _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-outline-success my-2 my-sm-0",
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.logout.apply(null, arguments)
+                      }
                     }
-                  }
-                },
-                [_vm._v("\n        Sair")]
-              )
-            : _c(
-                "div",
-                { staticClass: "btn-group", attrs: { role: "group" } },
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "btn btn-outline-success my-2 my-sm-0",
-                      attrs: { to: { name: "login" } }
-                    },
-                    [_c("strong", [_vm._v(" Entrar ")])]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "btn btn-outline-success my-2 my-sm-0",
-                      attrs: { to: { name: "register" } }
-                    },
-                    [_c("strong", [_vm._v(" Cadastre-se ")])]
-                  )
-                ],
-                1
-              )
-        ]
-      )
-    ])
+                  },
+                  [_vm._v("\n        Sair")]
+                )
+              : _c(
+                  "div",
+                  { staticClass: "btn-group", attrs: { role: "group" } },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "btn btn-outline-success my-2 my-sm-0",
+                        attrs: { to: { name: "login" } }
+                      },
+                      [_c("strong", [_vm._v(" Entrar ")])]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "btn btn-outline-success my-2 my-sm-0",
+                        attrs: { to: { name: "register" } }
+                      },
+                      [_c("strong", [_vm._v(" Cadastre-se ")])]
+                    )
+                  ],
+                  1
+                )
+          ]
+        )
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = [

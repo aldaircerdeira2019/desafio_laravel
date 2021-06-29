@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Home</a>
+      <router-link :to="{ name: 'home' }" class="navbar-brand" href="#">Home</router-link >
       <button
         class="navbar-toggler"
         type="button"
