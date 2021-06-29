@@ -28,7 +28,7 @@ class Dica extends Model
             if(isset($request['tipo_id']))
             {
                 $query->Where('tipo_id', $request['tipo_id']);
-            } 
+            }
             if(isset($request['marca_id']))
             {
                 $query->Where('marca_id', $request['marca_id']);
@@ -47,7 +47,7 @@ class Dica extends Model
             }
         })
 
-        ->with('modelo' , 'marca')
+        ->with('modelo' , 'marca', 'tipo', 'versao', 'user')
         ->paginate(20);
         return $result;
     }
@@ -56,9 +56,20 @@ class Dica extends Model
     {
         return $this->belongsTo(Modelo::class);
     }
-
+    public function versao()
+    {
+        return $this->belongsTo(Versao::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
     public function marca()
     {
         return $this->belongsTo(Marca::class);
+    }
+    public function tipo()
+    {
+        return $this->belongsTo(Tipo::class);
     }
 }
