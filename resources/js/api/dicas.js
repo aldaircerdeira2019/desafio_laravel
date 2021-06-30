@@ -15,6 +15,9 @@ let dicas = {
     dicaPut(params) {
         return axios.put(rota + "dica/" + params.id, params);
     },
+    dicaDelete(id) {
+        return axios.delete(rota + "dica/" + id);
+    },
 };
 
 export default dicas;

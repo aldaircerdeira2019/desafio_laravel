@@ -30,7 +30,11 @@
                   >
                     atualizar
                   </button>
-                  <button type="button" class="btn btn-danger btn-sm">
+                  <button
+                    type="button"
+                    class="btn btn-danger btn-sm"
+                    @click.prevent="enviarDeleteDica(dica)"
+                  >
                     deletar
                   </button>
                   <hr style="border: 0; border-top: 1px solid black" />
@@ -49,7 +53,7 @@
         </div>
       </div>
     </div>
-    <!-- <SubcategoryDelete ref="delete"></SubcategoryDelete> -->
+    <DeleteDica ref="delete"></DeleteDica>
     <CreateDica ref="create"></CreateDica>
     <UpdateDica ref="update"></UpdateDica>
   </div>
@@ -86,10 +90,12 @@ export default {
     enviarCreateDica: function () {
       this.$refs.create.modalPost();
     },
-     enviarUpdateDica: function (dica){
-        this.$refs.update.modalPut(dica)
-      },
-
+    enviarUpdateDica: function (dica) {
+      this.$refs.update.modalPut(dica);
+    },
+    enviarDeleteDica: function (dica) {
+      this.$refs.delete.modalDel(dica);
+    },
   },
 };
 </script>

@@ -2203,6 +2203,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -2241,6 +2245,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     enviarUpdateDica: function enviarUpdateDica(dica) {
       this.$refs.update.modalPut(dica);
+    },
+    enviarDeleteDica: function enviarDeleteDica(dica) {
+      this.$refs["delete"].modalDel(dica);
     }
   }
 });
@@ -2508,6 +2515,84 @@ __webpack_require__.r(__webpack_exports__);
     resetForm: function resetForm() {
       this.params = {};
       this.dica = {};
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/gerenciamento/components/DeleteDica.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/gerenciamento/components/DeleteDica.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _api_dicas__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../api/dicas */ "./resources/js/api/dicas.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      dica: {}
+    };
+  },
+  methods: {
+    modalDel: function modalDel(dica) {
+      this.dica = dica;
+      $("#delModalDica").modal("show");
+    },
+    delDica: function delDica(id) {
+      var _this = this;
+
+      _api_dicas__WEBPACK_IMPORTED_MODULE_0__.default.dicaDelete(id).then(function () {
+        _this.$toastr.s("Excluido com sucesso!");
+
+        $("#delModalDica").modal("hide");
+
+        _this.$parent.getDicas();
+      })["catch"](function (r) {
+        _this.$toastr.e("Ocorreu um erro.");
+      });
     }
   }
 });
@@ -3090,6 +3175,9 @@ var dicas = {
   },
   dicaPut: function dicaPut(params) {
     return axios__WEBPACK_IMPORTED_MODULE_0___default().put(rota + "dica/" + params.id, params);
+  },
+  dicaDelete: function dicaDelete(id) {
+    return axios__WEBPACK_IMPORTED_MODULE_0___default().delete(rota + "dica/" + id);
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (dicas);
@@ -40172,17 +40260,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-var render, staticRenderFns
-var script = {}
+/* harmony import */ var _DeleteDica_vue_vue_type_template_id_7c43dfdc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DeleteDica.vue?vue&type=template&id=7c43dfdc& */ "./resources/js/views/gerenciamento/components/DeleteDica.vue?vue&type=template&id=7c43dfdc&");
+/* harmony import */ var _DeleteDica_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DeleteDica.vue?vue&type=script&lang=js& */ "./resources/js/views/gerenciamento/components/DeleteDica.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
 
 
 /* normalize component */
 ;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__.default)(
-  script,
-  render,
-  staticRenderFns,
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _DeleteDica_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _DeleteDica_vue_vue_type_template_id_7c43dfdc___WEBPACK_IMPORTED_MODULE_0__.render,
+  _DeleteDica_vue_vue_type_template_id_7c43dfdc___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
   null,
@@ -40190,6 +40281,8 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
   
 )
 
+/* hot reload */
+if (false) { var api; }
 component.options.__file = "resources/js/views/gerenciamento/components/DeleteDica.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
@@ -40415,6 +40508,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/views/gerenciamento/components/DeleteDica.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/views/gerenciamento/components/DeleteDica.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteDica_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./DeleteDica.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/gerenciamento/components/DeleteDica.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteDica_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
 /***/ "./resources/js/views/gerenciamento/components/UpdateDica.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************!*\
   !*** ./resources/js/views/gerenciamento/components/UpdateDica.vue?vue&type=script&lang=js& ***!
@@ -40543,6 +40652,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateDica_vue_vue_type_template_id_2d9f1a2d___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateDica_vue_vue_type_template_id_2d9f1a2d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./CreateDica.vue?vue&type=template&id=2d9f1a2d& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/gerenciamento/components/CreateDica.vue?vue&type=template&id=2d9f1a2d&");
+
+
+/***/ }),
+
+/***/ "./resources/js/views/gerenciamento/components/DeleteDica.vue?vue&type=template&id=7c43dfdc&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/views/gerenciamento/components/DeleteDica.vue?vue&type=template&id=7c43dfdc& ***!
+  \***************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteDica_vue_vue_type_template_id_7c43dfdc___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteDica_vue_vue_type_template_id_7c43dfdc___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteDica_vue_vue_type_template_id_7c43dfdc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./DeleteDica.vue?vue&type=template&id=7c43dfdc& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/gerenciamento/components/DeleteDica.vue?vue&type=template&id=7c43dfdc&");
 
 
 /***/ }),
@@ -41132,7 +41258,13 @@ var render = function() {
                           "button",
                           {
                             staticClass: "btn btn-danger btn-sm",
-                            attrs: { type: "button" }
+                            attrs: { type: "button" },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.enviarDeleteDica(dica)
+                              }
+                            }
                           },
                           [
                             _vm._v(
@@ -41179,6 +41311,8 @@ var render = function() {
           ])
         ])
       ]),
+      _vm._v(" "),
+      _c("DeleteDica", { ref: "delete" }),
       _vm._v(" "),
       _c("CreateDica", { ref: "create" }),
       _vm._v(" "),
@@ -41641,6 +41775,80 @@ var staticRenderFns = [
     ])
   }
 ]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/gerenciamento/components/DeleteDica.vue?vue&type=template&id=7c43dfdc&":
+/*!******************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/views/gerenciamento/components/DeleteDica.vue?vue&type=template&id=7c43dfdc& ***!
+  \******************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "modal fade",
+      attrs: {
+        id: "delModalDica",
+        tabindex: "-1",
+        role: "dialog",
+        "aria-labelledby": "delModalDicaLabel",
+        "aria-hidden": "true",
+        "data-backdrop": "static"
+      }
+    },
+    [
+      _c("div", { staticClass: "modal-dialog" }, [
+        _c("div", { staticClass: "modal-content" }, [
+          _c("div", { staticClass: "modal-body" }, [
+            _c("h4", [
+              _vm._v("\n          Deseja realmente excluir : "),
+              _c("b", [_vm._v(_vm._s(_vm.dica.title) + ".")])
+            ]),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-danger btn-sm",
+                attrs: { type: "button", "data-dismiss": "modal" }
+              },
+              [_vm._v("\n          Cancelar\n        ")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-success btn-sm pull-right",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.delDica(_vm.dica.id)
+                  }
+                }
+              },
+              [_vm._v("\n          Sim\n        ")]
+            )
+          ])
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
