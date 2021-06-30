@@ -31,12 +31,22 @@ docker-compose up -d
 ```bash
 docker exec -it desafiolaravel bash
 ```
-5 - rodar as migrations e seed
+5 - rodar as migrations
+```bash
+php artisan migrate
+```
+6 - rodar as seed
 ```bash
 php artisan migrate --seed
 ```
 
-6 - host http://localhost:8080/
+7 - host http://localhost:8080/
+
+### usuario para teste
+
+    email = test@test.com.br
+
+    senha = 12345678
 
 
 obs: 
