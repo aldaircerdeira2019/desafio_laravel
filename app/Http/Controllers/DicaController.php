@@ -32,7 +32,6 @@ class DicaController extends Controller
             'descri'        => ['required'],
             'modelo_id'     => ['required'],
         ]);
-        $request['user_id'] = $user->id;
         $dica->update($request->all());
         return $dica;
     }

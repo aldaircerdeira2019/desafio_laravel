@@ -23,7 +23,11 @@
                     <strong>{{ dica.title }}</strong>
                   </h5>
                   <p class="card-text">{{ dica.descri }}</p>
-                  <button type="button" class="btn btn-primary btn-sm">
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-sm"
+                    @click.prevent="enviarUpdateDica(dica)"
+                  >
                     atualizar
                   </button>
                   <button type="button" class="btn btn-danger btn-sm">
@@ -45,9 +49,9 @@
         </div>
       </div>
     </div>
-    <!-- <SubcategoryUpdate ref="update" :categories="categories"></SubcategoryUpdate>
-    <SubcategoryDelete ref="delete"></SubcategoryDelete> -->
+    <!-- <SubcategoryDelete ref="delete"></SubcategoryDelete> -->
     <CreateDica ref="create"></CreateDica>
+    <UpdateDica ref="update"></UpdateDica>
   </div>
 </template>
 <script>
@@ -58,7 +62,7 @@ import UpdateDica from "./components/UpdateDica";
 
 export default {
   name: "Dicas",
-  components: {CreateDica, DeleteDica, UpdateDica},
+  components: { CreateDica, DeleteDica, UpdateDica },
   data() {
     return {
       dicas: {},
@@ -79,9 +83,12 @@ export default {
           this.$toastr.e("Ocorreu um erro.");
         });
     },
-    enviarCreateDica: function (){
-        this.$refs.create.modalPost()
-      }
+    enviarCreateDica: function () {
+      this.$refs.create.modalPost();
+    },
+     enviarUpdateDica: function (dica){
+        this.$refs.update.modalPut(dica)
+      },
 
   },
 };
