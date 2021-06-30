@@ -48,6 +48,7 @@ class Dica extends Model
         })
 
         ->with('modelo' , 'marca', 'tipo', 'versao', 'user')
+        ->orderBy('id', 'desc')
         ->paginate(20);
         return $result;
     }
